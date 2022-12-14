@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Base Apparel</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <section class="section">
+        <div class="apparel">
+            <div class="header">
+                <img src="images/logo.svg" class="logo__img">
+            </div>
+            <div class="apparel__container">
+                <img src="images/hero-mobile.jpg" class="mobile__img">
+                <div class="apparel__content container">
+                    <h1 class="apparel__title">
+                        WE'RE <br> <b> COMING <br class="br"> SOON </b>
+                    </h1>
+                    <p class="apparel__text">
+                        Hello fellow shoppers! We're currently building our new fashion store. 
+                        Add your email below to stay up-to-date with announcements and launch deals.
+                    </p>
+                    <form novalidate>
+                        <div class="apparel__button">
+                            <input type="email" id="email" name="email" placeholder="Email Address" class="apparel__input">
+                            <button type="submit" class="submit">
+                                <img src="images/icon-arrow.svg">
+                            </button>
+                            <img src="images/icon-error.svg" id="error-img" class="error__img">
+                        </div>
+                        <div class="error" id="error-message">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <img src="images/hero-desktop.jpg" alt="" class="desktop__img">
+    </section>
+    <script>
+        const form = document.querySelector('form');
+        const emailInput = document.querySelector('#email');
+        const errorMessage = document.querySelector('#error-message');
+        const errorImg = document.querySelector('#error-img');
+        const errorBor = document.querySelector('.apparel__button');
+  
+        form.addEventListener('submit', function(event) {
+           // Prevent the form from being submitted
+           event.preventDefault();
+
+           // Check the values of the form fields
+           const email =emailInput.value;
+           const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+           if (!emailRegex.test(email)) {
+              // If the email field is empty, show the error message
+              errorMessage.innerHTML = 'Please provide a valid email.';
+              errorMessage.style.display = 'block';
+              errorImg.style.display = 'block';
+              errorBor.style.border = 'solid 2px hsl(0, 93%, 68%)';
+           } else {
+              // Otherwise, the form is valid, so submit it
+            form.submit();
+           }
+        });
+    </script>
+</body>
+</html>
